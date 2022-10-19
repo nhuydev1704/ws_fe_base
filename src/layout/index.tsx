@@ -42,7 +42,7 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
                         <Content className="gx-layout-content">
                             <div className="gx-main-content-wrapper" style={{ overflow: 'auto' }}>
                                 <CustomScrollbars>
-                                    <PageComponent />
+                                    <PageComponent {...props} />
                                 </CustomScrollbars>
                             </div>
                             {/* footer content */}
@@ -58,7 +58,7 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
         ) : (
             <Layout className="gx-app-layout">
                 <ContainerAuthStyled justify="center" align="middle">
-                    <PageComponent />
+                    <PageComponent {...props} />
                 </ContainerAuthStyled>
             </Layout>
         );
