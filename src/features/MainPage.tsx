@@ -15,7 +15,11 @@ const MainPage = () => {
         // nếu đăng nhập và domain không webview và domain không public
         // if (LocalStorage.getToken() && pathname.includes('webview') && pathname.includes('public')) {
         if (LocalStorage.getToken()) {
-            navigate(routerPage.home);
+            if (pathname === routerPage.register || pathname === routerPage.login) {
+                // return switchSidebar(role)?.[0]?.key;
+                return navigate('/');
+            }
+            // navigate(pathname);
         } else {
             switch (pathname) {
                 case routerPage.register:
