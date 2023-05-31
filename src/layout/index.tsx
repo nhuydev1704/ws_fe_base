@@ -26,7 +26,7 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
             }
         }, []);
 
-        return isLogin ? (
+        return (
             <Layout className="gx-app-layout">
                 {/* sidebar */}
                 <SideBar
@@ -39,8 +39,8 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
                     {width < TAB_SIZE && <Topbar handleCallbackCollapseMobile={handleCallbackCollapseMobile} />}
                     {/* body content */}
                     <ErrorBoundary>
-                        <Content className="gx-layout-content">
-                            <div className="gx-main-content-wrapper" style={{ overflow: 'auto' }}>
+                        <Content style={{ height: '100vh' }} className="gx-layout-content">
+                            <div className="gx-main-content-wrapper" style={{ overflow: 'auto', height: '100vh' }}>
                                 <CustomScrollbars>
                                     <PageComponent />
                                 </CustomScrollbars>
@@ -54,12 +54,6 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
                         </Content>
                     </ErrorBoundary>
                 </Layout>
-            </Layout>
-        ) : (
-            <Layout className="gx-app-layout">
-                <ContainerAuthStyled justify="center" align="middle">
-                    <PageComponent />
-                </ContainerAuthStyled>
             </Layout>
         );
     };

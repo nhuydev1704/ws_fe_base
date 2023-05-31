@@ -1,16 +1,17 @@
 import { Notification } from '@/utils';
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import LocalStorage from './LocalStorage';
 
+const API_URL = import.meta.env.VITE_API_URL;
 const AxiosClient = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: API_URL,
     headers: {
         'content-type': 'application/json',
     },
 });
 
 // handle request to convert all api requests to snake_case
-AxiosClient.interceptors.request.use(async (config: AxiosRequestConfig) => {
+AxiosClient.interceptors.request.use(async (config: any) => {
     const token = LocalStorage.getToken();
 
     const newConfig = { ...config };

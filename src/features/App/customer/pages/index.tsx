@@ -1,8 +1,20 @@
 import PageLayout from '@/layout';
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-const CustomerPage = () => {
-    return <div>{hihi.anem}</div>;
+export async function loader() {
+    await new Promise((r) => setTimeout(r, 500));
+    return 'I came from the About.tsx loader function!';
+}
+
+export const CustomerPage: React.FC = () => {
+    const data = useLoaderData() as string;
+
+    return (
+        <div>
+            {' '}
+            <h2>About</h2>
+            <p>{data}</p>
+        </div>
+    );
 };
-
-export default CustomerPage;

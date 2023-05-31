@@ -1,3 +1,4 @@
+import PageLayout from '@/layout';
 import React from 'react';
 import styled from 'styled-components';
 const HomePage = () => {
@@ -6,4 +7,4 @@ const HomePage = () => {
     return <div>HomePage1232412</div>;
 };
 
-export default HomePage;
+export default PageLayout(HomePage);
