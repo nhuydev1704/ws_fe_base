@@ -1,5 +1,5 @@
 import { notification } from 'antd';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 // send notification
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
@@ -22,11 +22,11 @@ export const Notification = (status: NotificationType, msg: any) => {
 export const momentToStringDate = (date: string | Date, type = 'date') => {
     switch (type) {
         case 'date':
-            return date ? moment(date).utc().format('DD/MM/YYYY') : '';
+            return date ? dayjs(date).format('DD/MM/YYYY') : '';
         case 'dateTime':
-            return moment(date).utc().format('HH:mm DD/MM/YYYY');
+            return dayjs(date).format('HH:mm DD/MM/YYYY');
         case 'time':
-            return moment(date).utc().format('HH:mm');
+            return dayjs(date).format('HH:mm');
         default:
             return '';
     }
@@ -49,7 +49,7 @@ export const checkEmptyAllFieldInObject = (obj: any) => {
 // generator uuid
 export function uuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = (Math.random() * 16) | 0,
+        const r = (Math.random() * 16) | 0,
             v = c == 'x' ? r : (r & 0x3) | 0x8;
         return v.toString(16);
     });
@@ -127,8 +127,8 @@ export const removeDuplicateIdInArray = (arr: any) => {
 
 // check now
 export const checkNowDate = (date: string) => {
-    const dateNow = moment().format('YYYY-MM-DD');
-    const timeNow = moment().format('HH:mm');
+    const dateNow = dayjs().format('YYYY-MM-DD');
+    const timeNow = dayjs().format('HH:mm');
     const dateCompare = momentParseUtc(date).format('YYYY-MM-DD');
     const timeCompare = momentParseUtc(date).format('HH:mm');
     // split timeCompare into hour and minute
@@ -145,8 +145,8 @@ export const checkNowDate = (date: string) => {
                 return true;
             }
         }
-        if (dateNow !== dateCompare) {
-        }
+        // if (dateNow !== dateCompare) {
+        // }
     }
 
     return false;
@@ -154,8 +154,8 @@ export const checkNowDate = (date: string) => {
 
 // check now start voucher date
 export const checkNowStartVoucherDate = (date: string) => {
-    const dateNow = moment().format('YYYY-MM-DD');
-    const timeNow = moment().format('HH:mm');
+    const dateNow = dayjs().format('YYYY-MM-DD');
+    const timeNow = dayjs().format('HH:mm');
     const dateCompare = momentParseUtc(date).format('YYYY-MM-DD');
     const timeCompare = momentParseUtc(date).format('HH:mm');
     // split timeCompare into hour and minute
@@ -179,7 +179,7 @@ export const checkNowStartVoucherDate = (date: string) => {
 
 // moment parse utc
 export const momentParseUtc = (date: string) => {
-    return moment(date).utc();
+    return dayjs(date);
 };
 
 // move array
@@ -204,8 +204,8 @@ export function arrayMoveImmutable(array: any, fromIndex: any, toIndex: any) {
 // read money vietnam
 
 function readGroup(group: any) {
-    let readDigit = [' Không', ' Một', ' Hai', ' Ba', ' Bốn', ' Năm', ' Sáu', ' Bảy', ' Tám', ' Chín'];
-    var temp = '';
+    const readDigit = [' Không', ' Một', ' Hai', ' Ba', ' Bốn', ' Năm', ' Sáu', ' Bảy', ' Tám', ' Chín'];
+    let temp = '';
     if (group == '000') return '';
     temp = readDigit[parseInt(group.substring(0, 1))] + ' Trăm';
     if (group.substring(1, 2) == '0')
@@ -226,12 +226,12 @@ export function readMoney(num: any) {
     while (num.length < 18) {
         num = '0' + num;
     }
-    let g1 = num.substring(0, 3);
-    let g2 = num.substring(3, 6);
-    let g3 = num.substring(6, 9);
-    let g4 = num.substring(9, 12);
-    let g5 = num.substring(12, 15);
-    let g6 = num.substring(15, 18);
+    const g1 = num.substring(0, 3);
+    const g2 = num.substring(3, 6);
+    const g3 = num.substring(6, 9);
+    const g4 = num.substring(9, 12);
+    const g5 = num.substring(12, 15);
+    const g6 = num.substring(15, 18);
     if (g1 != '000') {
         temp = readGroup(g1);
         temp += ' Triệu';
@@ -267,11 +267,11 @@ export function readMoney(num: any) {
     temp = temp.trim();
     temp = temp.replaceAll('Mươi Một', 'Mươi Mốt');
     temp = temp.trim();
-    let result = temp.substring(0, 1).toUpperCase() + temp.substring(1).toLowerCase();
+    const result = temp.substring(0, 1).toUpperCase() + temp.substring(1).toLowerCase();
     return (result == '' ? 'Không' : result) + ' đồng chẵn';
 }
 
 export function checkTotalPage(totalPage: number, limit: number) {
-    let page = Math.ceil(totalPage / limit);
+    const page = Math.ceil(totalPage / limit);
     return page;
 }

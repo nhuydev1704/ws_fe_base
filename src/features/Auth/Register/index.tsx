@@ -1,9 +1,9 @@
-import { routerPage } from '@/config/routes';
 import { Button, Checkbox, Form, Input } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper';
 import InfoRegister from './components/InfoRegister';
+import { ROUTER_PAGE } from '@/config/routes/contants';
 
 const RegisterPage = () => {
     const handleSubmit = async (value: any) => {
@@ -57,7 +57,7 @@ const RegisterPage = () => {
                                         Đăng ký
                                     </Button>
                                     <span>hoặc </span>
-                                    <Link to={routerPage.login}>Đăng nhập</Link>
+                                    <Link to={ROUTER_PAGE.login}>Đăng nhập</Link>
                                 </Form.Item>
                             </Form>
                         </div>

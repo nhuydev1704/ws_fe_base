@@ -46,7 +46,17 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
+  }
+
+  section.ant-layout {
+    max-height: 100vh;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+  aside.ant-layout-sider {
+    min-height: 100vh;
+
   }
 
 

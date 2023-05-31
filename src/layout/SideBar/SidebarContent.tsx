@@ -6,6 +6,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { items } from './Sidebar.Menu';
+import IconAntd from '@/components/IconAntd';
 
 const SidebarContent = ({
     collapsed,
@@ -21,10 +22,14 @@ const SidebarContent = ({
     const defaultOpenKeys = selectedKeys.split('/')[1] || 'dashboard';
 
     return (
-        <>
-            <Row align="middle" className="gx-m-0 gx-layout-sider-header">
+        <div>
+            <Row
+                align="middle"
+                justify={collapsed ? 'center' : 'space-between'}
+                style={{ padding: '10px', marginBottom: '10px' }}
+            >
                 {!collapsed && (
-                    <Link className="gx-d-block gx-pointer" to="/">
+                    <Link to="/">
                         <img
                             height="40px"
                             alt=""
@@ -32,39 +37,21 @@ const SidebarContent = ({
                         />
                     </Link>
                 )}
-                <div className="gx-linebar" onClick={handleCallbackCollapsed}>
+                {/* <div style={{ cursor: 'pointer' }} onClick={handleCallbackCollapsed}>
                     {collapsed ? (
-                        <MenuUnfoldOutlined className="gx-icon-btn" />
+                        <IconAntd icon="MenuUnfoldOutlined" style={{ color: '#222' }} />
                     ) : (
-                        <MenuFoldOutlined className="gx-icon-btn" />
+                        <IconAntd style={{ color: '#222' }} icon="MenuFoldOutlined" />
                     )}
-                </div>
+                </div> */}
             </Row>
-            <div className="gx-sidebar-content">
-                {/* top sidebar */}
-                <div className="gx-sidebar-notifications">
-                    {/* user info */}
-                    <UserInfo />
-                    {/* menu action */}
-                    <ul className="gx-app-nav gx-mt-4">
-                        <li>
-                            <NotificationOutlined />
-                        </li>
-                        <li>
-                            <NotificationOutlined />
-                        </li>
-                        <li>
-                            <NotificationOutlined />
-                        </li>
-                    </ul>
-                </div>
+            <div>
                 {/* sidebar menu */}
                 <CustomScrollbars className="gx-layout-sider-scrollbar">
-                    <div className="gx-menu-group">
+                    <div>
                         <MenuStyled
                             defaultOpenKeys={[defaultOpenKeys]}
                             selectedKeys={[selectedKeys]}
-                            theme="dark"
                             mode="inline"
                             items={items}
                             onClick={(e) => navigate('/' + e.key)}
@@ -72,11 +59,12 @@ const SidebarContent = ({
                     </div>
                 </CustomScrollbars>
             </div>
-        </>
+        </div>
     );
 };
 
 const MenuStyled = styled(Menu)`
+    border-inline-end: none !important;
     * {
         font-weight: 600;
     }

@@ -1,67 +1,81 @@
-import LocalStorage from '@/apis/LocalStorage';
-import { AuthRoutes, PrivateRoutes, routerPage } from '@/config/routes';
+import { AdminRoutes, AuthRoutes } from '@/config/routes';
+import { ROUTER_PAGE } from '@/config/routes/contants';
+import { ADMIN } from '@/contants';
 import PageLayout from '@/layout';
 import React from 'react';
-import { RouterProvider, createBrowserRouter, useLocation, useNavigate } from 'react-router-dom';
-import HomePage from './App/home/page';
-import NotFoundPage from './Notfound';
+import { useLocation, useNavigate, useRoutes } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
+const switchRoute = (role: string) => {
+    // 'group'
+    switch (role) {
+        case ADMIN.main:
+            return AdminRoutes;
 
-// khởi tạo router
-const router = createBrowserRouter([
-    {
-        path: '/',
-        children: [
-            {
-                index: true,
-                element: <HomePage />,
-            },
-            {
-                path: 'customer',
-                // Single route in lazy file
-                async lazy() {
-                    // Multiple routes in lazy file
-                    const { CustomerPage } = await import('@/features/App/customer/pages/index');
-                    return { Component: PageLayout(CustomerPage) };
-                },
-            },
-            // {
-            //     path: 'dashboard',
-            //     async lazy() {
-            //         // Multiple routes in lazy file
-            //         let { DashboardLayout } = await import('./pages/Dashboard');
-            //         return { Component: DashboardLayout };
-            //     },
-            //     children: [
-            //         {
-            //             index: true,
-            //             async lazy() {
-            //                 let { DashboardIndex } = await import('./pages/Dashboard');
-            //                 return { Component: DashboardIndex };
-            //             },
-            //         },
-            //         {
-            //             path: 'messages',
-            //             async lazy() {
-            //                 let { dashboardMessagesLoader, DashboardMessages } = await import('./pages/Dashboard');
-            //                 return {
-            //                     loader: dashboardMessagesLoader,
-            //                     Component: DashboardMessages,
-            //                 };
-            //             },
-            //         },
-            //     ],
-            // },
-            {
-                path: '*',
-                element: <NotFoundPage />,
-            },
-        ],
-    },
-]);
-
-// config routes
-const MainPage = () => {
-    return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;
+        case ADMIN.stall:
+            return AdminRoutes;
+        default:
+            return AdminRoutes;
+    }
 };
 
-export default MainPage;
+const Redirect = () => {
+    const navigate = useNavigate();
+    // const location = useLocation();
+
+    React.useEffect(() => {
+        // const adminLogin = LocalStorage.getAdminLogin();
+        // if (!adminLogin) return;
+        // if (token) {
+        //     navigate(routerPage.adminSpin);
+        // } else {
+        //     navigate(routerPage.login);
+        // }
+    }, []);
+
+    return (
+        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'red', zIndex: '999' }}>
+            <ClipLoader />
+        </div>
+    );
+};
+
+// config routes
+const MainPage = ({ role, token }: { role: string; token: string }) => {
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+
+    const element = useRoutes(token ? switchRoute(role) : AuthRoutes);
+    console.log('🚀 ~ file: MainPage.tsx:48 ~ element:', element);
+
+    const [logged, setLogged] = React.useState(false);
+
+    React.useEffect(() => {
+        if (logged || pathname === '/vn_pay') return;
+
+        // nếu đăng nhập và domain không webview và domain không public
+        // if (token && pathname.includes('webview') && pathname.includes('public')) {
+
+        if (token) {
+            setLogged(true);
+
+            if (pathname === ROUTER_PAGE.register || pathname === ROUTER_PAGE.login) {
+                // return switchSidebar(role)?.[0]?.key;
+                return navigate('/');
+            }
+            // navigate(pathname);
+        } else {
+            switch (pathname) {
+                case ROUTER_PAGE.register:
+                    navigate(ROUTER_PAGE.register);
+                    break;
+                default:
+                    navigate(ROUTER_PAGE.login);
+                    break;
+            }
+        }
+    }, [logged, pathname, role]);
+
+    return element;
+};
+
+export default PageLayout(MainPage);

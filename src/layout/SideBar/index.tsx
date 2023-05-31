@@ -19,29 +19,20 @@ const SideBar = ({
         setCollapsed(!collapsed);
     };
 
-    return (
+    return width < TAB_SIZE ? (
+        <Drawer placement="left" closable={false} onClose={handleCallbackCollapseMobile} open={collapsedMobile}>
+            <SidebarContent />
+        </Drawer>
+    ) : (
         <Layout.Sider
-            className={`gx-app-sidebar ${width < TAB_SIZE && 'gx-collapsed-sidebar'} ${
-                collapsed && 'gx-mini-sidebar'
-            }  gx-layout-sider-dark`}
+            width="260px"
+            style={{ padding: '10px' }}
+            theme="light"
             trigger={null}
             collapsed={width < TAB_SIZE ? false : collapsed}
             collapsible
-            theme="dark"
         >
-            {width < TAB_SIZE ? (
-                <Drawer
-                    className="gx-drawer-sidebar gx-drawer-sidebar-dark"
-                    placement="left"
-                    closable={false}
-                    onClose={handleCallbackCollapseMobile}
-                    open={collapsedMobile}
-                >
-                    <SidebarContent />
-                </Drawer>
-            ) : (
-                <SidebarContent handleCallbackCollapsed={handleCallbackCollapsed} collapsed={collapsed} />
-            )}
+            <SidebarContent handleCallbackCollapsed={handleCallbackCollapsed} collapsed={collapsed} />
         </Layout.Sider>
     );
 };

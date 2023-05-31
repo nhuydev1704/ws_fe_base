@@ -1,5 +1,4 @@
 import LocalStorage from '@/apis/LocalStorage';
-import { routerPage } from '@/config/routes';
 import { wait } from '@/utils';
 import { Button, Checkbox, Form, Input, Row } from 'antd';
 import React from 'react';
@@ -7,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { DotLoader } from 'react-spinners';
 import Wrapper from '../../Wrapper';
 import InfoLogin from '../components/InfoLogin';
+import { ROUTER_PAGE } from '@/config/routes/contants';
 
 const LoginPage = () => {
     const [loading, setLoading] = React.useState(false);
@@ -62,7 +62,7 @@ const LoginPage = () => {
                                             Đăng nhập
                                         </Button>
                                         <span>hoặc </span>
-                                        <Link to={routerPage.register}>Đăng ký</Link>
+                                        <Link to={ROUTER_PAGE.register}>Đăng ký</Link>
                                     </Form.Item>
                                 </Form>
                             </div>
