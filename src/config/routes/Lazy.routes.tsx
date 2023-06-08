@@ -19,7 +19,6 @@ const Lazy = ({ children }: { children: any }) => {
                     style={{
                         height: '100vh',
                         width: '100%',
-                        backgroundColor: 'rgba(0,0,0,.05)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',

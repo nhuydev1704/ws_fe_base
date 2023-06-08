@@ -3,10 +3,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -56,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
   }
   aside.ant-layout-sider {
     min-height: 100vh;
-
+    box-shadow: 5px 0 5px -5px #e5e5e5;
   }
 
 
@@ -153,7 +149,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .gx-layout-sider-scrollbar {
-  height: calc(100vh - 230px) !important
+  height: 100%;
 }
 
 .disabled {

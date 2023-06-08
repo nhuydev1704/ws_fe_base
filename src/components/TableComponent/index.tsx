@@ -109,8 +109,9 @@ const TableComponent: React.FC<IProps> = ({
                     <TableStyled
                         showSorterTooltip={{ title: 'Sắp xếp' }}
                         loading={loading || loadingRefresh}
-                        title={header ? () => header : undefined}
+                        caption={header}
                         id={id}
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         rowSelection={
                             rowSelect

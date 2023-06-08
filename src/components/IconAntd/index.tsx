@@ -18,7 +18,7 @@ const IconAntd = ({
     //@ts-ignore
     const AntdIcon = AntdIcons[icon];
 
-    return <AntdIcon spin={spin} style={{ fontSize: size, height: size, ...style }} {...props} />;
+    return <AntdIcon spin={spin} style={{ fontSize: size, color: '#333', height: size, ...style }} {...props} />;
 };
 
 export default IconAntd;

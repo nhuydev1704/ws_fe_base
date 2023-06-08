@@ -1,16 +1,15 @@
-import CustomScrollbars from '@/components/CustomScrollbars';
 import { TAB_SIZE } from '@/config/theme';
 import ErrorBoundary from '@/features/Error/ErrorBoundary';
 import useWindowSize from '@/hooks/useWindowSize';
 import SideBar from '@/layout/SideBar';
-import { Layout, Row } from 'antd';
+import { Layout } from 'antd';
 import React from 'react';
-import styled from 'styled-components';
 import Topbar from './Content/Topbar';
-const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
+import { ContainerAuthStyled } from './style';
+
+const PageLayout = (PageComponent: React.JSXElementConstructor<unknown>) => {
     return function WithPage({ ...props }) {
         const { width } = useWindowSize();
-        const [isLogin, setIsLogin] = React.useState(false);
 
         const [collapsedMobile, setCollapsedMobile] = React.useState(false);
 
@@ -18,13 +17,7 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
             setCollapsedMobile(!collapsedMobile);
         }, [collapsedMobile]);
 
-        React.useLayoutEffect(() => {
-            if (props.token) {
-                setIsLogin(true);
-            }
-        }, [props.token]);
-
-        return isLogin ? (
+        return props.token ? (
             <Layout>
                 {/* sidebar */}
                 <SideBar
@@ -37,8 +30,10 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
                     {width < TAB_SIZE && <Topbar handleCallbackCollapseMobile={handleCallbackCollapseMobile} />}
                     {/* body content */}
                     <ErrorBoundary>
-                        <Layout.Content style={{ maxHeight: '100vh', overflow: 'hidden' }}>
+                        <Layout.Content style={{ padding: '10px' }}>
+                            {/* <CustomScrollbars> */}
                             <PageComponent {...props} />
+                            {/* </CustomScrollbars> */}
                             {/* footer content */}
                             {/* <Footer>
                                 <div className="gx-layout-footer-content">
@@ -50,7 +45,7 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
                 </Layout>
             </Layout>
         ) : (
-            <Layout className="gx-app-layout">
+            <Layout>
                 <ContainerAuthStyled justify="center" align="middle">
                     <PageComponent {...props} />
                 </ContainerAuthStyled>
@@ -58,9 +53,5 @@ const PageLayout = (PageComponent: React.JSXElementConstructor<any>) => {
         );
     };
 };
-
-const ContainerAuthStyled = styled(Row)`
-    min-height: 100vh;
-`;
 
 export default PageLayout;

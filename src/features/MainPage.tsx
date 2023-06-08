@@ -4,7 +4,6 @@ import { ADMIN } from '@/contants';
 import PageLayout from '@/layout';
 import React from 'react';
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
 const switchRoute = (role: string) => {
     // 'group'
     switch (role) {
@@ -16,27 +15,6 @@ const switchRoute = (role: string) => {
         default:
             return AdminRoutes;
     }
-};
-
-const Redirect = () => {
-    const navigate = useNavigate();
-    // const location = useLocation();
-
-    React.useEffect(() => {
-        // const adminLogin = LocalStorage.getAdminLogin();
-        // if (!adminLogin) return;
-        // if (token) {
-        //     navigate(routerPage.adminSpin);
-        // } else {
-        //     navigate(routerPage.login);
-        // }
-    }, []);
-
-    return (
-        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'red', zIndex: '999' }}>
-            <ClipLoader />
-        </div>
-    );
 };
 
 // config routes
