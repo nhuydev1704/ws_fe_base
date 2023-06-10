@@ -1,4 +1,3 @@
-import { Descriptions, Select } from 'antd';
 import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -224,10 +223,6 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
-export const DefaultSelectStyled = styled(Select)`
-    width: 200px;
-`;
-
 export const TitleCard = styled.h3`
     text-transform: uppercase;
     font-weight: 600;
@@ -244,12 +239,6 @@ export const TitleCardDes = styled.h3`
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 0;
-`;
-
-export const DescriptionStyled = styled(Descriptions)`
-    & .ant-descriptions-view {
-        border: 1px solid #f0f0f0;
-    }
 `;
 
 export default GlobalStyle;

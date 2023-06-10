@@ -1,6 +1,5 @@
 import LocalStorage from '@/apis/LocalStorage';
 import { wait } from '@/utils';
-import { Button, Checkbox, Form, Input, Row } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { DotLoader } from 'react-spinners';
@@ -41,7 +40,7 @@ const LoginPage = () => {
                 <Container>
                     {/* <InfoLogin /> */}
                     <div style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-                        <Form
+                        {/* <Form
                             style={{ width: '100%' }}
                             initialValues={{ email: 'admin@gmail.com', password: 'admin' }}
                             onFinish={handleSubmit}
@@ -81,7 +80,7 @@ const LoginPage = () => {
                                     <Link to={ROUTER_PAGE.register}>Đăng ký</Link>
                                 </div>
                             </Form.Item>
-                        </Form>
+                        </Form> */}
                     </div>
                 </Container>
             </Wrapper>

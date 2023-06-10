@@ -1,22 +1,22 @@
-import { notification } from 'antd';
+// import { notification } from 'antd';
 import dayjs from 'dayjs';
 
 // send notification
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
 
-export const Notification = (status: NotificationType, msg: any) => {
-    if (status !== 'error') {
-        notification[status]({
-            message: 'Thông báo',
-            description: msg,
-        });
-    } else {
-        notification[status]({
-            message: 'Thông báo',
-            description: msg,
-        });
-    }
-};
+// export const Notification = (status: NotificationType, msg: any) => {
+//     if (status !== 'error') {
+//         notification[status]({
+//             message: 'Thông báo',
+//             description: msg,
+//         });
+//     } else {
+//         notification[status]({
+//             message: 'Thông báo',
+//             description: msg,
+//         });
+//     }
+// };
 
 // moment time to DD/MM/YYYY or ...'
 export const momentToStringDate = (date: string | Date, type = 'date') => {

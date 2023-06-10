@@ -1,4 +1,3 @@
-import { Button, Checkbox, Form, Input } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Wrapper from '../Wrapper';
@@ -16,7 +15,7 @@ const RegisterPage = () => {
                     <div className="gx-app-login-main-content">
                         <InfoRegister />
                         <div className="gx-app-login-content">
-                            <Form onFinish={handleSubmit} className="gx-signup-form gx-form-row0">
+                            {/* <Form onFinish={handleSubmit} className="gx-signup-form gx-form-row0">
                                 <Form.Item
                                     name="name"
                                     rules={[
@@ -59,7 +58,7 @@ const RegisterPage = () => {
                                     <span>hoặc </span>
                                     <Link to={ROUTER_PAGE.login}>Đăng nhập</Link>
                                 </Form.Item>
-                            </Form>
+                            </Form> */}
                         </div>
                     </div>
                 </Wrapper>

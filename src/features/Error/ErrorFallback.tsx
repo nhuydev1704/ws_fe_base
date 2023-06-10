@@ -1,6 +1,6 @@
-import { Button } from 'antd';
 import React from 'react';
 import './error.style.css';
+import { Button } from '@nextui-org/react';
 const ErrorFallback = () => {
     return (
         <div className="main-error-page">

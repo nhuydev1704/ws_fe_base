@@ -1,16 +1,4 @@
-import { Menu, Row } from 'antd';
 import { styled } from 'styled-components';
-
-export const ContainerAuthStyled = styled(Row)`
-    min-height: 100vh;
-`;
-
-export const MenuStyled = styled(Menu)`
-    border-inline-end: none !important;
-    * {
-        font-weight: 600;
-    }
-`;
 
 export const ContainerSidebarContentStyled = styled.div`
     display: flex;
