@@ -18,19 +18,20 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
     height: 100%;
     max-width: 100vw;
 
     overflow: hidden;
-    line-height: 1.6rem;
-    font-weight: 500;
+    line-height: 16px; 
+    font-weight: bold;
 
     box-sizing: border-box;
   }
 
+
   * {
-    box-sizing: inherit;
+    /* box-sizing: inherit; */
     font-family: 'Quicksand', sans-serif !important;
   }
 
@@ -73,6 +74,9 @@ const GlobalStyle = createGlobalStyle`
     min-width: 100px;
   }
 
+  .nextui-navbar-container {
+    max-width: 100%;
+  }
 
   .ant-descriptions-bordered .ant-descriptions-view {
     border: none;
@@ -119,7 +123,7 @@ const GlobalStyle = createGlobalStyle`
   }
 /* custom scrollbar */
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -129,7 +133,6 @@ const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
   border-radius: 20px;
-  border: 6px solid transparent;
   background-clip: content-box;
 }
 

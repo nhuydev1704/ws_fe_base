@@ -1,6 +1,5 @@
 import React from 'react';
-import { styled } from 'styled-components';
-
+import styled from '@emotion/styled';
 interface TypographyProps extends React.HTMLAttributes<HTMLParagraphElement> {
     children?: React.ReactNode;
     fontWeight?: number | string;
