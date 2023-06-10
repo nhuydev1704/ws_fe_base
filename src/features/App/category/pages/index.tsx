@@ -1,14 +1,11 @@
 import TableComponent from '@/components/TableComponent';
-import PageLayout from '@/layout';
 import ContentContainer from '@/layout/Content';
 import CardContent from '@/layout/Content/Card';
 import HeaderComponent from '@/layout/Content/Header';
 import { Button, Input, Space } from 'antd';
 import React from 'react';
-import styled from 'styled-components';
-const HomePage = () => {
-    const [count, setCount] = React.useState(0);
 
+const CategoryPage = () => {
     return (
         <ContentContainer
             header={<HeaderComponent title="demo title" />}
@@ -32,4 +29,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default CategoryPage;

@@ -5,8 +5,8 @@ export const ROUTER_PAGE = {
     // private....
     home: '/',
 
-    // customer
-    customer: '/customer',
+    // category
+    category: '/category',
 
     // auth....
     login: '/auth/login',

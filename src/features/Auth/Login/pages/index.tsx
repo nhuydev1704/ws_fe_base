@@ -7,6 +7,19 @@ import { DotLoader } from 'react-spinners';
 import Wrapper from '../../Wrapper';
 import InfoLogin from '../components/InfoLogin';
 import { ROUTER_PAGE } from '@/config/routes/contants';
+import { styled } from 'styled-components';
+import { SHADOW } from '@/config/theme';
+
+const Container = styled.div`
+    height: auto;
+    width: 500px;
+    box-shadow: ${SHADOW};
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+`;
 
 const LoginPage = () => {
     const [loading, setLoading] = React.useState(false);
@@ -21,55 +34,57 @@ const LoginPage = () => {
     };
 
     return (
-        <div style={{ height: '100vh', width: '100vw' }}>
-            <div className="gx-app-login-wrap">
-                <div className="gx-app-login-container">
-                    <Wrapper loading={loading}>
-                        <div className="gx-app-login-main-content">
-                            <InfoLogin />
-                            <div className="gx-app-login-content">
-                                <Form
-                                    initialValues={{ email: 'admin@gmail.com', password: 'admin' }}
-                                    onFinish={handleSubmit}
-                                    className="gx-signin-form gx-form-row"
+        <div
+            style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        >
+            <Wrapper loading={loading}>
+                <Container>
+                    {/* <InfoLogin /> */}
+                    <div style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+                        <Form
+                            style={{ width: '100%' }}
+                            initialValues={{ email: 'admin@gmail.com', password: 'admin' }}
+                            onFinish={handleSubmit}
+                        >
+                            <Form.Item
+                                name="email"
+                                rules={[
+                                    {
+                                        required: true,
+                                        type: 'email',
+                                        message: 'Vui lòng nhập đúng địa chỉ E-mail!',
+                                    },
+                                ]}
+                            >
+                                <Input placeholder="Nhập địa chỉ email" />
+                            </Form.Item>
+                            <Form.Item
+                                className="gx-mb-1"
+                                name="password"
+                                rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
+                            >
+                                <Input.Password type="password" placeholder="Nhập mật khẩu" />
+                            </Form.Item>
+                            <Row justify="end">
+                                <Form.Item style={{ marginBottom: '10px' }} initialValue={true}>
+                                    <Checkbox checked>Nhớ mật khẩu</Checkbox>
+                                </Form.Item>
+                            </Row>
+                            <Form.Item style={{ marginBottom: 0 }}>
+                                <div
+                                    style={{ display: 'flex', gap: 5, alignItems: 'center', justifyContent: 'center' }}
                                 >
-                                    <Form.Item
-                                        name="email"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                type: 'email',
-                                                message: 'Vui lòng nhập đúng địa chỉ E-mail!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input placeholder="Nhập địa chỉ email" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        className="gx-mb-1"
-                                        name="password"
-                                        rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
-                                    >
-                                        <Input.Password type="password" placeholder="Nhập mật khẩu" />
-                                    </Form.Item>
-                                    <Row justify="end">
-                                        <Form.Item className="gx-m-0" initialValue={true}>
-                                            <Checkbox checked>Nhớ mật khẩu</Checkbox>
-                                        </Form.Item>
-                                    </Row>
-                                    <Form.Item>
-                                        <Button type="primary" htmlType="submit" className="gx-mb-0">
-                                            Đăng nhập
-                                        </Button>
-                                        <span>hoặc </span>
-                                        <Link to={ROUTER_PAGE.register}>Đăng ký</Link>
-                                    </Form.Item>
-                                </Form>
-                            </div>
-                        </div>
-                    </Wrapper>
-                </div>
-            </div>
+                                    <Button type="primary" htmlType="submit" className="gx-mb-0">
+                                        Đăng nhập
+                                    </Button>
+                                    <span>hoặc </span>
+                                    <Link to={ROUTER_PAGE.register}>Đăng ký</Link>
+                                </div>
+                            </Form.Item>
+                        </Form>
+                    </div>
+                </Container>
+            </Wrapper>
         </div>
     );
 };

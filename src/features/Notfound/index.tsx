@@ -4,7 +4,7 @@ import { ClipLoader } from 'react-spinners';
 
 const NotFoundPage = () => {
     return (
-        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'red', zIndex: '999' }}>
+        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'transparent', zIndex: '999' }}>
             <ClipLoader />
         </div>
     );
