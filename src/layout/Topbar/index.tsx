@@ -12,7 +12,7 @@ import {
 
 const Topbar = () => {
     return (
-        <Navbar maxWidth="full" isBlurred={false} height="60px" className="shadow-md border-b-0">
+        <Navbar maxWidth="full" isBlurred={false} height="60px" className="shadow-sm border-b-0">
             <NavbarBrand>
                 <p className="font-bold text-inherit">ACME</p>
             </NavbarBrand>

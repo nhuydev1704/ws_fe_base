@@ -17,7 +17,7 @@ const Filter = ({ left, right }: IProps) => {
             {!right?.hiddenSearch && (
                 <div className="w-[300px]">
                     <Input
-                        labelPlacement="inside"
+                        color="default"
                         placeholder="Nhập để tìm kiếm ..."
                         size="xs"
                         classNames={{

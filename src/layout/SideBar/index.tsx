@@ -31,9 +31,10 @@ const SideBar = React.memo(() => {
             backgroundColor="#fff"
             rootStyles={{
                 color: themes[theme].sidebar.color,
-                boxShadow: '0 12px 20px 6px rgb(104 112 118 / 0.08)',
+                // boxShadow: '0 12px 20px 6px rgb(104 112 118 / 0.08)',
                 zIndex: 1000,
             }}
+            className="shadow-sm"
         >
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <SidebarHeader style={{ marginBottom: '10px', marginTop: '16px' }} />
