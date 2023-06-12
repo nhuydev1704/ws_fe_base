@@ -1,7 +1,7 @@
 import { AdminRoutes, AuthRoutes } from '@/config/routes';
 import { ROUTER_PAGE } from '@/config/routes/contants';
 import { ADMIN } from '@/contants';
-import PageLayout from '@/layout';
+import Layout from '@/layout';
 import React from 'react';
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom';
 const switchRoute = (role: string) => {
@@ -56,4 +56,4 @@ const MainPage = ({ role, token }: { role: string; token: string }) => {
     return element;
 };
 
-export default PageLayout(MainPage);
+export default Layout(MainPage);

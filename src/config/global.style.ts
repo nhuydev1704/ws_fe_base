@@ -24,7 +24,6 @@ const GlobalStyle = createGlobalStyle`
 
     overflow: hidden;
     line-height: 16px; 
-    font-weight: bold;
 
     box-sizing: border-box;
   }

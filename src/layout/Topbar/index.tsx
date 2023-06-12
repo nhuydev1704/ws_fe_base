@@ -1,80 +1,59 @@
-import { Avatar, Dropdown, Navbar, Text } from '@nextui-org/react';
-import React from 'react';
-import { styled } from 'styled-components';
+import {
+    Avatar,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
+    Navbar,
+    NavbarBrand,
+    NavbarContent,
+    NavbarItem,
+} from '@nextui-org/react';
 
 const Topbar = () => {
     return (
-        <Navbar
-            height="60px"
-            css={{
-                boxShadow: '$sm',
-            }}
-            shouldHideOnScroll
-            variant="sticky"
-        >
-            <Navbar.Brand
-                css={{
-                    '@xs': {
-                        w: '12%',
-                    },
-                }}
-            >
-                <Text b color="inherit">
-                    ACME
-                </Text>
-            </Navbar.Brand>
+        <Navbar maxWidth="full" isBlurred={false} height="60px" className="shadow-md border-b-0">
+            <NavbarBrand>
+                <p className="font-bold text-inherit">ACME</p>
+            </NavbarBrand>
 
-            <Navbar.Content
-                css={{
-                    '@xs': {
-                        w: '12%',
-                        jc: 'flex-end',
-                    },
-                }}
-            >
-                <Dropdown placement="bottom-right">
-                    <Navbar.Item>
-                        <Dropdown.Trigger>
+            <NavbarContent justify="end">
+                <Dropdown placement="bottom-end">
+                    <DropdownTrigger>
+                        <NavbarItem>
                             <Avatar
-                                bordered
+                                isBordered
                                 as="button"
+                                className="transition-transform"
                                 color="secondary"
-                                size="md"
+                                size="sm"
                                 src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
                             />
-                        </Dropdown.Trigger>
-                    </Navbar.Item>
-                    <Dropdown.Menu
-                        aria-label="User menu actions"
-                        color="secondary"
-                        onAction={(actionKey) => console.log({ actionKey })}
-                    >
-                        <Dropdown.Item key="profile" css={{ height: '$18' }}>
-                            <Text b color="inherit" css={{ d: 'flex' }}>
-                                Signed in as
-                            </Text>
-                            <Text b color="inherit" css={{ d: 'flex' }}>
-                                zoey@example.com
-                            </Text>
-                        </Dropdown.Item>
-                        <Dropdown.Item key="settings" withDivider>
+                        </NavbarItem>
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="Profile Actions" color="secondary">
+                        <DropdownItem key="profile" className="h-14 gap-2">
+                            <p className="font-semibold">Signed in as</p>
+                            <p className="font-semibold">zoey@example.com</p>
+                        </DropdownItem>
+                        <DropdownItem key="settings" showDivider>
                             My Settings
-                        </Dropdown.Item>
-                        <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
-                        <Dropdown.Item key="analytics" withDivider>
+                        </DropdownItem>
+                        <DropdownItem key="team_settings">Team Settings</DropdownItem>
+                        <DropdownItem key="analytics" showDivider>
                             Analytics
-                        </Dropdown.Item>
-                        <Dropdown.Item key="system">System</Dropdown.Item>
-                        <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
-                        <Dropdown.Item key="help_and_feedback" withDivider>
+                        </DropdownItem>
+                        <DropdownItem key="system">System</DropdownItem>
+                        <DropdownItem key="configurations">Configurations</DropdownItem>
+                        <DropdownItem key="help_and_feedback" showDivider>
                             Help & Feedback
-                        </Dropdown.Item>
-                        <Dropdown.Item key="logout" withDivider color="error">
+                        </DropdownItem>
+                        <DropdownItem key="logout" showDivider color="danger">
                             Log Out
-                        </Dropdown.Item>
-                    </Dropdown.Menu>
+                        </DropdownItem>
+                    </DropdownMenu>
                 </Dropdown>
-            </Navbar.Content>
+            </NavbarContent>
         </Navbar>
     );
 };
