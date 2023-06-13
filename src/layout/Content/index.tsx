@@ -14,19 +14,9 @@ const ContentContainer: React.FC<IContentContainerProps> = React.memo(({ filter,
 
     return (
         <Card shadow="sm" radius="lg">
-            <CardBody>
+            <CardBody className="p-3">
                 <div>{filter}</div>
                 <div>{content || children}</div>
-                <div className="flex justify-center pt-[20px]">
-                    <Pagination
-                        total={Math.ceil(100 / 12)}
-                        showShadow
-                        color="primary"
-                        page={currentPage}
-                        onChange={setCurrentPage}
-                        showControls
-                    />
-                </div>
             </CardBody>
         </Card>
     );
