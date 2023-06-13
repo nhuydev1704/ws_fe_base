@@ -22,7 +22,7 @@ interface IPropTableBase {
 }
 
 const handleCountPaging = (dataSource: any, row: any, page: any) => {
-    return dataSource.findIndex((data: any) => row.id === data.id) + (page === 1 ? 1 : (page - 1) * RECORD_SIZE);
+    return dataSource.findIndex((data: any) => row.id === data.id) + (page === 1 ? 1 : (page - 1) * (RECORD_SIZE + 1));
 };
 
 const TableBase = ({
@@ -36,6 +36,7 @@ const TableBase = ({
     onChangePage,
     isPaging = true,
 }: IPropTableBase) => {
+    console.log('🚀 ~ file: index.tsx:39 ~ page:', page);
     return (
         <>
             <Table removeWrapper onSelectionChange={onSelectionChange} selectionMode={selectionMode} shadow="sm">
