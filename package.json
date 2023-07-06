@@ -7,13 +7,16 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fm": "prettier index.html --write",
+    "format": "prettier ./public/js/render.0da231a293dd78cf9e48.js --write"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.5.2",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
+    "prettier": "^3.0.0",
     "react": "^18.2.0",
     "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18.2.0",

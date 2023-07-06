@@ -4,7 +4,8 @@ import GlobalStyle from './config/global.style';
 import MainPage from './features/MainPage';
 
 function App() {
-    console.log('render');
+    console.log('render', window);
+
     return (
         <div style={{ minHeight: '100vh' }}>
             <MainPage token={LocalStorage.getToken()} />
